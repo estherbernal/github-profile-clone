@@ -1,0 +1,219 @@
+#queries de la API
+
+#todos los repos de MI usuario:
+
+{
+  viewer {
+    repositories(first: 100) {
+      totalCount
+      nodes {
+        nameWithOwner
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+    }
+  }
+}
+
+# 10 pirmeros usuarios que su nombre incluya "esther"
+
+{
+  search(query: "esther in:name", type: USER, first: 10) {
+    userCount
+    edges {
+      node {
+        ... on User {
+          login
+          name
+          location
+          email
+          company
+        }
+      }
+    }
+  }
+}
+
+
+#10 primeros usuarios de Munich
+{
+  search(query: "location:munich", type: USER, first: 10) {
+    userCount
+    edges {
+      node {
+        ... on User {
+          login
+          name
+          location
+          email
+          company
+        }
+      }
+    }
+  }
+}
+
+#repos de un user
+
+# Sin "after" da la primera página y cada "endCursor" es la siguiente página
+# La última página sigue teniendo "endCursor" así que hay que vigilar en valor de "hasNextPage"
+query{
+  user(login:"satansdeer") {
+    repositories(first: 50, after:"xxxxx") {
+      totalCount
+      nodes {
+        nameWithOwner
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+    }
+  }
+}
+
+
+# Lista de repositorios de un user
+# el valor de after puede ser el endCursor para cambiar de página o el de un cursor de un edge, para que muestre los 10 primeros después de ese repositorio concreto
+{
+  repositoryOwner(login:"esthersinnick"){
+    repositories(first:10, after:"Y3Vyc29yOnYyOpHOC5pJ7A==") {
+      totalCount
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          nameWithOwner,
+          name,
+          description,
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 10 pirmeros usuarios que su username incluya "esther"
+
+{
+  search(query: "esther in:login", type: USER, first: 10) {
+    userCount
+    edges {
+      node {
+        ... on User {
+          login
+          name
+          location
+          email
+          company
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+# lista de users buscando por palabra
+# muestra tanto users como organizaciones (__typename: "User" o "Organization")
+# si hay espacio lo interpreta como palabras independientes y junta los resultados de ambas búsquedas
+{
+search(query: "monkey", type: USER, last: 100) {
+  	userCount
+    edges {
+      node {
+        __typename
+        ...on User {
+          login,
+          name,
+          email
+        }
+      }
+      textMatches {
+        fragment
+        property
+        highlights {
+          text
+        }
+
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+#Lista de repositorios con nombre, desc, lenguajes, fecha de creación, de actualización
+# el "size" de los lenguajes servirá para saber cuál destacar en la lista
+{
+  user(login: "esthersinnick") {
+    repositories(first: 50, isFork:false) {
+      totalCount
+      nodes {
+        nameWithOwner
+        createdAt
+        updatedAt
+        description
+        languages(first: 1, orderBy: {field: SIZE, direction: DESC}) {
+          totalCount
+          totalSize
+          edges {
+            size
+            node {
+              name
+              color
+            }
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+    }
+  }
+}
+
+
+
+
+# url para los svg de los repos
+https://github.com/[login]/[repo-name]/graphs/participation?w=155&h=28&type=sparkline
+
+
+# crear token:
+https://github.com/esthersinnick/tailwind-practise/graphs/participation?w=155&h=28&type=sparkline)
+
+# leer token
+localStorage.getItem('token') 
+process.env.REACT_APP_TOKEN
