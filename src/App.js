@@ -1,19 +1,22 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+
+import { ApolloProvider } from '@apollo/client'
+
+// Service
+import { createApolloClient } from './services/client'
 
 // Components
-import AuthPage from './pages/authPage/AuthPage'
-import HomePage from './pages/homePage/HomePage'
-import ProfilePage from './pages/profilePage/ProfilePage'
+import GlobalStyle from './GlobalStyles'
+import AppRouter from './router/AppRouter'
 
 const App = () => (
-  <Router>
-    <Switch>
-      <Route path={'/'} component={HomePage} exact />
-      <Route path={'/auth'} component={AuthPage} exact />
-      <Route path={'/:username'} component={ProfilePage} exact />
-    </Switch>
-  </Router>
+  <ApolloProvider client={createApolloClient()}>
+    <GlobalStyle />
+    <Router>
+      <AppRouter />
+    </Router>
+  </ApolloProvider>
 )
 
 export default App

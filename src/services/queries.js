@@ -1,13 +1,41 @@
-import gql from 'graphql-tag'
+import { gql } from '@apollo/client'
+
+export const ME = gql`
+  {
+    viewer {
+      login
+    }
+  }
+`
 
 /** Uses two variables: $username and $quantity */
-export const repositories = gql`
-  {
-    user(login: "esthersinnick") {
-      repositories(first: 10, isFork: false) {
+export const USER = gql`
+  query($username: String!, $quantity: Int!) {
+    viewer {
+      login
+    }
+    user(login: $username) {
+      name
+      login
+      avatarUrl
+      bio
+      location
+      websiteUrl
+      followers {
+        totalCount
+      }
+      following {
+        totalCount
+      }
+      starredRepositories {
+        totalCount
+      }
+      repositories(first: $quantity) {
         totalCount
         nodes {
-          nameWithOwner
+          id
+          name
+          #nameWithOwner
           createdAt
           updatedAt
           description
@@ -33,9 +61,53 @@ export const repositories = gql`
 `
 
 /** Uses one variable: $inputValue */
-export const users = gql`
+export const USERS_BY_USERNAME = gql`
+  query($inputValue: String!) {
+    search(query: $inputValue, type: USER, first: 10) {
+      userCount
+      edges {
+        node {
+          ... on User {
+            login
+            name
+            location
+            company
+          }
+        }
+      }
+    }
+  }
+`
+
+export const USERS_BY_TEXT = gql`
+  query($inputValue: String!) {
+    search(query: $inputValue, type: USER, last: 10) {
+      userCount
+      edges {
+        node {
+          __typename
+          ... on User {
+            id
+            login
+            name
+            avatarUrl
+          }
+        }
+        textMatches {
+          fragment
+          property
+          highlights {
+            text
+          }
+        }
+      }
+    }
+  }
+`
+
+export const USERS_FROM_MUNICH = gql`
   {
-    search(query: "$inputValue in:login", type: USER, first: 10) {
+    search(query: "location:munich", type: USER, first: 10) {
       userCount
       edges {
         node {

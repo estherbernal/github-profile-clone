@@ -1,26 +1,42 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams } from 'react-router'
 
-import { Query } from 'react-apollo'
+import { useQuery } from '@apollo/client'
+
+// Components
+import ProfileDetail from '../../components/profileDetail/ProfileDetail'
+
+// Styled components
+import { Profile } from './profilePage.styles'
 
 // Queries
-import { repositories } from '../../services/queries'
+import { USER } from '../../services/queries'
 
 const ProfilePage = () => {
   const { username } = useParams()
 
-  useEffect(() => {}, [])
+  const { loading, error, data } = useQuery(USER, {
+    variables: { username, quantity: 30 },
+  })
+
+  //si username no existe, da error
+  if (error) {
+    return <p>{`Error: ${error.message}`}</p>
+  }
+  if (loading) {
+    return <p>Loading</p>
+  }
 
   return (
-    <Query query={repositories} variables={{ username, quantity: 10 }}>
-      {({ data, loading }) =>
-        loading ? (
-          <div>Profile</div>
-        ) : (
-          <p>{data.user.repositories.nodes[0].nameWithOwner}</p>
-        )
-      }
-    </Query>
+    <Profile>
+      <ProfileDetail user={data.user} viewer={data.viewer} />
+      <div>
+        repositories list
+        {data.user.repositories.nodes.map((repository) => (
+          <p key={repository.id}>{repository.name}</p>
+        ))}
+      </div>
+    </Profile>
   )
 }
 
