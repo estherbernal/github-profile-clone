@@ -17,7 +17,7 @@ const ProfilePage = () => {
   const { username } = useParams()
 
   const { loading, error, data } = useQuery(USER, {
-    variables: { username, quantity: 100 },
+    variables: { username, quantity: 30 },
   })
 
   //si username no existe, da error

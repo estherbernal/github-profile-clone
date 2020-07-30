@@ -30,7 +30,10 @@ export const USER = gql`
       starredRepositories {
         totalCount
       }
-      repositories(first: $quantity) {
+      repositories(
+        first: $quantity
+        orderBy: { field: CREATED_AT, direction: DESC }
+      ) {
         totalCount
         nodes {
           id

@@ -13,7 +13,7 @@ export const Input = styled.input`
   border-color: ${(props) => (props.color === 'dark' ? '#3f4448' : '#e1e4e8')};
   background-color: ${(props) => (props.color === 'dark' ? '#3f4448' : '#fff')};
   ::placeholder {
-    color: ${(props) => (props.color === 'dark' ? '#cfd0d1' : '#24292e')};
+    color: ${(props) => (props.color === 'dark' ? '#cfd0d1' : '#7a7c80')};
     opacity: 1;
   }
 `

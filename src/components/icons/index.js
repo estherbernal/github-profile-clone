@@ -1,3 +1,4 @@
+export * from './ChartIcon'
 export * from './FollowersIcon'
 export * from './GithubIcon'
 export * from './LocationIcon'
