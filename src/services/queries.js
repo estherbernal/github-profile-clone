@@ -11,9 +11,6 @@ export const ME = gql`
 /** Uses two variables: $username and $quantity */
 export const USER = gql`
   query($username: String!, $quantity: Int!) {
-    viewer {
-      login
-    }
     user(login: $username) {
       name
       login

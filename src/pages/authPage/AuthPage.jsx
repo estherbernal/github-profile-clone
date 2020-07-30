@@ -17,8 +17,13 @@ const AuthPage = () => {
 
   const history = useHistory()
 
-  const validateToken = (e) => {
-    e.preventDefault()
+  /**
+   * Validates if Token has de correct length,
+   * and if is possible to make a request to the API with it
+   */
+
+  const validateToken = (event) => {
+    event.preventDefault()
     if (inputValue.length !== 40) {
       setErrorMessage('Invalid Token')
     } else {
@@ -34,6 +39,12 @@ const AuthPage = () => {
     console.log(onLoginResponse.error)
     setErrorMessage('Invalid Token')
   }
+
+  /**
+   * If the token is valid, there will be data,
+   * so it saves the login too and redirects to
+   * the user's profile
+   */
   if (onLoginResponse.data) {
     localStorage.setItem('login', onLoginResponse.data.viewer.login)
     history.push(`/${onLoginResponse.data.viewer.login}`)

@@ -22,7 +22,7 @@ import {
   UserStatus,
 } from './profileDetail.styles'
 
-const ProfileDetail = ({ user, viewer }) => {
+const ProfileDetail = ({ user, login }) => {
   return (
     <ProfileContainer>
       <AvatarWrapper>
@@ -37,7 +37,7 @@ const ProfileDetail = ({ user, viewer }) => {
         {user.bio && <p>{user.bio}</p>}
       </Headings>
       <div>
-        {user.login === viewer.login ? (
+        {user.login === login ? (
           <Button>Edit profile</Button>
         ) : (
           <ButtonsWrapper>

@@ -1,5 +1,10 @@
 import ApolloClient from 'apollo-boost'
 
+/**
+ * If there is an authentication error doing a request,
+ * "onError" function remove the token from localStorage
+ * and return you to validation page (public route)
+ */
 export const createApolloClient = () => {
   return new ApolloClient({
     uri: 'https://api.github.com/graphql',
