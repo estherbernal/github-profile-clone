@@ -14,6 +14,7 @@ import { Button } from '../styledComponents'
 import {
   Avatar,
   AvatarWrapper,
+  ButtonsWrapper,
   Connections,
   Headings,
   MoreInfo,
@@ -39,10 +40,10 @@ const ProfileDetail = ({ user, viewer }) => {
         {user.login === viewer.login ? (
           <Button>Edit profile</Button>
         ) : (
-          <>
+          <ButtonsWrapper>
             <Button>Follow</Button>
-            <Button>...</Button>
-          </>
+            <Button width={'fit-content'}>...</Button>
+          </ButtonsWrapper>
         )}
         <Connections>
           <FollowersIcon />

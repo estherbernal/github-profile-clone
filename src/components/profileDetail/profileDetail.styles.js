@@ -17,6 +17,17 @@ export const Avatar = styled.img`
   border: 1px solid #e1e4e8;
   border-radius: 50%;
 `
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  button {
+    margin-right: 8px;
+    &:last-child {
+      margin: 0;
+    }
+  }
+`
+
 export const Connections = styled.div`
   color: #586069;
   margin: 16px 0;
