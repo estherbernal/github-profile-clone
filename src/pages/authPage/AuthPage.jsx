@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-
 import { useHistory } from 'react-router-dom'
 
-import { useLazyQuery } from '@apollo/client'
+// Styled components
+import { Content, ErrorMessage, Form } from './authPage.styles'
+import { Button, Input } from '../../components/styledComponents'
 
 // Queries
+import { useLazyQuery } from '@apollo/client'
 import { ME } from '../../services/queries'
 
 const AuthPage = () => {
@@ -36,16 +38,38 @@ const AuthPage = () => {
     history.push('/')
   }
   return (
-    <form onSubmit={validateToken}>
-      <input
-        value={inputValue}
-        onChange={(e) => {
-          setInputValue(e.target.value)
-        }}
-      />
-      <button type={'submit'}>Go</button>
-      <span>{errorMessage}</span>
-    </form>
+    <Content>
+      <div>
+        <h1>Insert your GitHub API token</h1>
+        <p>
+          To generate your token or for more information,
+          <a
+            href={
+              'https://docs.github.com/es/enterprise/2.19/user/github/authenticating-to-github/creating-a-personal-access-token'
+            }
+            target={'_blank'}
+          >
+            click here
+          </a>
+          .
+        </p>
+      </div>
+      <Form onSubmit={validateToken}>
+        <div>
+          <Input
+            value={inputValue}
+            placeholder={'Write your token...'}
+            onChange={(e) => {
+              setInputValue(e.target.value)
+            }}
+          />
+          <Button width={'fit-content'} type={'submit'}>
+            Validate Token
+          </Button>
+        </div>
+        <ErrorMessage>{errorMessage}</ErrorMessage>
+      </Form>
+    </Content>
   )
 }
 

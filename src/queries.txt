@@ -212,7 +212,7 @@ https://github.com/[login]/[repo-name]/graphs/participation?w=155&h=28&type=spar
 
 
 # crear token:
-https://github.com/esthersinnick/tailwind-practise/graphs/participation?w=155&h=28&type=sparkline)
+https://docs.github.com/es/enterprise/2.19/user/github/authenticating-to-github/creating-a-personal-access-token
 
 # leer token
 localStorage.getItem('token') 
