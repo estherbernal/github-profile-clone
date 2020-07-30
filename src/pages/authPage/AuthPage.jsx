@@ -35,7 +35,8 @@ const AuthPage = () => {
     setErrorMessage('Invalid Token')
   }
   if (onLoginResponse.data) {
-    history.push('/')
+    localStorage.setItem('login', onLoginResponse.data.viewer.login)
+    history.push(`/${onLoginResponse.data.viewer.login}`)
   }
   return (
     <Content>
