@@ -1,17 +1,40 @@
 import React from 'react'
 
 // Components
+import {
+  FollowersIcon,
+  LocationIcon,
+  StatusIcon,
+  StarIcon,
+  UrlIcon,
+} from '../icons'
+
 // Styled components
-import { Button } from '../styledComponents/Button'
-import { ProfileContainer } from './profileDetail.styles'
+import { Button } from '../styledComponents'
+import {
+  Avatar,
+  AvatarWrapper,
+  Connections,
+  Headings,
+  MoreInfo,
+  ProfileContainer,
+  UserStatus,
+} from './profileDetail.styles'
 
 const ProfileDetail = ({ user, viewer }) => {
   return (
     <ProfileContainer>
-      <img src={user.avatarUrl} />
-      <h1>{user.name}</h1>
-      <h2>{user.login}</h2>
-      {user.bio && <p>{user.bio}</p>}
+      <AvatarWrapper>
+        <Avatar src={user.avatarUrl} alt={user.login} />
+        <UserStatus>
+          <StatusIcon />
+        </UserStatus>
+      </AvatarWrapper>
+      <Headings>
+        <h1>{user.name}</h1>
+        <h2>{user.login}</h2>
+        {user.bio && <p>{user.bio}</p>}
+      </Headings>
       <div>
         {user.login === viewer.login ? (
           <Button>Edit profile</Button>
@@ -21,13 +44,34 @@ const ProfileDetail = ({ user, viewer }) => {
             <Button>...</Button>
           </>
         )}
-        <ul>
-          <li>{user.followers.totalCount} followers</li>
-          <li>{user.following.totalCount} following</li>
-          <li>{user.starredRepositories.totalCount}</li>
-        </ul>
-        {user.location && <p>{user.location}</p>}
-        {user.websiteUrl && <p>{user.websiteUrl}</p>}
+        <Connections>
+          <FollowersIcon />
+          <span>
+            <strong>{user.followers.totalCount}</strong>
+            followers
+          </span>
+          <span>
+            <strong>{user.following.totalCount}</strong> following
+          </span>
+          <StarIcon />
+          <span>
+            <strong>{user.starredRepositories.totalCount}</strong>
+          </span>
+        </Connections>
+        <MoreInfo>
+          {user.location && (
+            <p>
+              <LocationIcon />
+              {user.location}
+            </p>
+          )}
+          {user.websiteUrl && (
+            <p>
+              <UrlIcon />
+              {user.websiteUrl}
+            </p>
+          )}
+        </MoreInfo>
       </div>
       <div></div>
     </ProfileContainer>

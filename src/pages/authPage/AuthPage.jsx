@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { useHistory } from 'react-router-dom'
 
-import { gql, useLazyQuery } from '@apollo/client'
+import { useLazyQuery } from '@apollo/client'
 
 // Queries
 import { ME } from '../../services/queries'

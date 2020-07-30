@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useQuery } from '@apollo/client'
 
 // Queries
-import { USERS_BY_TEXT, USERS_FROM_MUNICH } from '../../services/queries'
+import { USERS_BY_TEXT } from '../../services/queries'
 
 const HomePage = () => {
   const [inputText, setInputText] = useState('')
@@ -25,10 +25,10 @@ const HomePage = () => {
         <p>Loading</p>
       ) : (
         <>
-          <div>{data?.search?.userCount}</div>
-          {data?.search?.edges?.map((user) => (
+          <div>{data.search.userCount}</div>
+          {data.search.edges.map((user) => (
             <div key={user.node.id}>
-              <img src={user.node.avatarUrl} />
+              <img src={user.node.avatarUrl} alt={user.node.login} />
               <p>{user.node.name}</p>
               <p>{user.node.login}</p>
             </div>

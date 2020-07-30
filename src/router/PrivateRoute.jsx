@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 
-import Header from '../components/header/Header'
+import Layout from '../components/layout/Layout'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const token = localStorage.getItem('token')
@@ -11,9 +11,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       render={(props) => (
         <>
           {token ? (
-            <Header>
+            <Layout>
               <Component {...props} />
-            </Header>
+            </Layout>
           ) : (
             <Redirect to={'/auth'} />
           )}

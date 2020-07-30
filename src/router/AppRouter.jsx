@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Switch, withRouter } from 'react-router-dom'
 
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'

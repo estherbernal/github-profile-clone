@@ -1,16 +1,19 @@
-// import styled from 'styled-components'
+import styled from 'styled-components'
 
-// export const Input = styled.input`
-//   font-size: ${(props) =>
-//     props.fontSize ? props.theme.type[props.fontSize] : props.theme.type.sizeS};
-//   width: ${(props) => props.width || '100%'};
-//   height: 32px;
-//   border: none;
-//   border-radius: ${(props) => props.theme.box.borderRadius};
-//   padding: ${(props) => props.theme.layout.spacingS};
-//   box-shadow: ${(props) => props.theme.box.boxShadow};
-//   &:focus,
-//   &:active {
-//     outline: none;
-//   }
-// `
+export const Input = styled.input`
+  width: ${(props) => props.width || '100%'};
+  height: 32px;
+  padding: 5px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: middle;
+  border: 1px solid;
+  border-radius: 6px;
+  color: ${(props) => (props.color === 'dark' ? '#cfd0d1' : '#24292e')};
+  border-color: ${(props) => (props.color === 'dark' ? '#3f4448' : '#e1e4e8')};
+  background-color: ${(props) => (props.color === 'dark' ? '#3f4448' : '#fff')};
+  ::placeholder {
+    color: ${(props) => (props.color === 'dark' ? '#cfd0d1' : '#24292e')};
+    opacity: 1;
+  }
+`

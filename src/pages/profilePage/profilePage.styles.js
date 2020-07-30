@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-export const Profile = styled.div`
-  position: relative;
+import { Container } from '../../components/styledComponents'
+
+export const Profile = styled(Container)`
   display: flex;
 `
