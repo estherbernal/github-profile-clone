@@ -14,7 +14,7 @@ export const createApolloClient = () => {
     },
     onError: ({ networkError }) => {
       const path = window.location.pathname
-      if (networkError?.statusCode === 401 && path !== '/auth') {
+      if (networkError?.statusCode === 401 && path !== '/') {
         localStorage.removeItem('token')
         window.location.reload()
       }
