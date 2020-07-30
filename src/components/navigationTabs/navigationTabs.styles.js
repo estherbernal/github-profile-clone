@@ -3,6 +3,8 @@ import styled from 'styled-components'
 export const TabsWrapper = styled.nav`
   width: 75%;
   height: 100%;
+  overflow-x: auto;
+  display: flex;
 `
 
 export const Tab = styled.a`
