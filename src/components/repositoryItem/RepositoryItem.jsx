@@ -16,18 +16,19 @@ import {
 } from './repositoryItem.styles'
 
 const RepositoryItem = ({ repository }) => {
+  const language = repository.languages.edges[0]
+    ? repository.languages.edges[0]?.node
+    : null
   return (
     <Card>
       <Column>
         <h3>{repository.name}</h3>
         <Description>
-          {repository.languages.edges[0]?.node.color && (
-            <ColorLabel color={repository.languages.edges[0].node.color} />
-          )}
-          {repository.languages.edges[0]?.node.name && (
-            <DescriptionItem>
-              {repository.languages.edges[0].node.name}
-            </DescriptionItem>
+          {language && (
+            <>
+              <ColorLabel color={language.color} />
+              <DescriptionItem>{language.name}</DescriptionItem>
+            </>
           )}
 
           {repository.updatedAt && (
