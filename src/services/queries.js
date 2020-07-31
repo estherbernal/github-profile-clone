@@ -8,7 +8,10 @@ export const ME = gql`
   }
 `
 
-/** Uses two variables: $username and $quantity */
+/** Uses two variables:
+ * @params {string} $username
+ * @params {number} $quantity
+ * */
 export const USER = gql`
   query($username: String!, $quantity: Int!) {
     user(login: $username) {
@@ -60,7 +63,9 @@ export const USER = gql`
   }
 `
 
-/** Uses one variable: $inputValue */
+/** Uses one variable
+ *  * @params {string} $inputValue
+ */
 export const USERS_BY_USERNAME = gql`
   query($inputValue: String!) {
     search(query: $inputValue, type: USER, first: 10) {
@@ -79,6 +84,9 @@ export const USERS_BY_USERNAME = gql`
   }
 `
 
+/** Uses one variable
+ *  * @params {string} $inputValue
+ */
 export const USERS_BY_TEXT = gql`
   query($inputValue: String!) {
     search(query: $inputValue, type: USER, last: 10) {
