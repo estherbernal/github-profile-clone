@@ -18,7 +18,3 @@ It is needed a GitHub API token. To get yours, you can follow the steps indicate
 
     npm i
     npm start
-
-## NOTES
-
-This is the first time I'm using GraphQL API.
