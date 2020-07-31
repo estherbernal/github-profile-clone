@@ -31,8 +31,8 @@ const ProfilePage = () => {
   const onChangePage = () => {}
 
   /**
-   * Requests to the API the user's data using
-   * the username from URL params
+   * Requests the user's data to the API
+   * using the username from URL params
    * @params {string} username from URL params
    */
   const { loading: userLoading, error: userError, data: userData } = useQuery(
@@ -42,6 +42,11 @@ const ProfilePage = () => {
     }
   )
 
+  /**
+   * Requests the user's repositories list to the API
+   * @params {string} username from URL params
+   * @params {string} searchValue from search input
+   */
   const {
     loading: reposLoading,
     error: reposError,
@@ -76,10 +81,7 @@ const ProfilePage = () => {
 
   return (
     <>
-      <ProfileNav
-        user={userData.user}
-        repositoriesCounter={userData.user.repositories.totalCount}
-      />
+      <ProfileNav user={userData.user} repositoriesCounter={totalCount} />
       <Profile>
         <ProfileDetail user={userData.user} login={login} />
         <RepositoriesContent>
@@ -97,6 +99,7 @@ const ProfilePage = () => {
                 </Message>
               )}
               <RepositoriesList
+                currentCount={currentCount}
                 repositories={reposData.search.edges}
                 onChangePage={onChangePage}
               />
