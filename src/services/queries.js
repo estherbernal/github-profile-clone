@@ -30,7 +30,7 @@ export const USER = gql`
       starredRepositories {
         totalCount
       }
-      repositories(isFork: false, affiliations: OWNER, first: 1) {
+      repositories(first: 1) {
         totalCount
       }
     }

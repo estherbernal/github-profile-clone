@@ -11,7 +11,7 @@ const RepositoriesList = ({ repositories, onChangePage, currentCount }) => {
   return (
     <ListWrapper>
       {repositories.map((repository) => (
-        <RepositoryItem repository={repository.node} key={repository.id} />
+        <RepositoryItem repository={repository.node} key={repository.node.id} />
       ))}
       {currentCount > 30 && <Pagination onChangePage={onChangePage} />}
     </ListWrapper>

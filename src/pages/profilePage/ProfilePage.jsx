@@ -27,9 +27,6 @@ const ProfilePage = () => {
   const login = localStorage.getItem('login')
   const [searchValue, setSearchValue] = useState('')
 
-  //gestionar paginado de resultados
-  const onChangePage = () => {}
-
   /**
    * Requests the user's data to the API
    * using the username from URL params
@@ -52,8 +49,11 @@ const ProfilePage = () => {
     error: reposError,
     data: reposData,
   } = useQuery(REPOSITORIES_BY_SEARCH, {
-    variables: { query: `${searchValue} user:${username}` },
+    variables: { query: `${searchValue} user:${username}`, after: '' },
   })
+
+  //gestionar paginado de resultados
+  const onChangePage = () => {}
 
   if (userError) {
     return (
@@ -92,7 +92,7 @@ const ProfilePage = () => {
           {reposLoading && <Loader />}
           {reposData?.search.repositoryCount > 0 && (
             <>
-              {totalCount > currentCount && (
+              {searchValue.length > 0 && (
                 <Message>
                   <strong>{currentCount}</strong> results for repositories
                   matching <strong>{searchValue}</strong>
