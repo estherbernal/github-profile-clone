@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 // Styled components
 import { Content, ErrorMessage, Form } from './authPage.styles'
 import { Button, Input } from '../../components/styledComponents'
+import { Loader } from '../../components/loader/Loader'
 
 // Queries
 import { useLazyQuery } from '@apollo/client'
@@ -33,7 +34,7 @@ const AuthPage = () => {
   }
 
   if (onLoginResponse.loading) {
-    return <p>Loading</p>
+    return <Loader />
   }
   if (onLoginResponse.error && !errorMessage) {
     console.log(onLoginResponse.error)
