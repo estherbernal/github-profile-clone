@@ -51,9 +51,6 @@ const ProfilePage = () => {
     variables: { query: `${searchValue} user:${username}`, after: '' },
   })
 
-  //gestionar paginado de resultados
-  const onChangePage = () => {}
-
   if (userError) {
     return (
       <NotFound>
@@ -100,7 +97,6 @@ const ProfilePage = () => {
               <RepositoriesList
                 currentCount={currentCount}
                 repositories={reposData.search.edges}
-                onChangePage={onChangePage}
               />
             </>
           )}

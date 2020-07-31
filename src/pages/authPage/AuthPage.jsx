@@ -37,7 +37,6 @@ const AuthPage = () => {
     return <Loader />
   }
   if (onLoginResponse.error && !errorMessage) {
-    console.log(onLoginResponse.error)
     setErrorMessage('Invalid Token')
   }
 
