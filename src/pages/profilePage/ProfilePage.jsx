@@ -32,12 +32,11 @@ const ProfilePage = () => {
    * using the username from URL params
    * @params {string} username from URL params
    */
-  const { loading: userLoading, error: userError, data: userData } = useQuery(
-    USER,
-    {
-      variables: { username },
-    }
-  )
+  const {
+    loading: userLoading,
+    error: userError,
+    data: userData,
+  } = useQuery(USER, { variables: { username } })
 
   /**
    * Requests the user's repositories list to the API
