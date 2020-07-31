@@ -19,6 +19,13 @@ const ProfilePage = () => {
   const { username } = useParams()
   const login = localStorage.getItem('login')
 
+  /**
+   * Requests to the API the user's data using
+   * the username from URL params
+   * @params {string} username from URL params
+   * @params {number} quantity to select number
+   * of repositories per page
+   */
   const { loading, error, data } = useQuery(USER, {
     variables: { username, quantity: 30 },
   })
