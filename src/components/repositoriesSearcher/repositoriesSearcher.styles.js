@@ -30,6 +30,7 @@ export const FilterButton = styled(Button)`
 
 export const SearchWrapper = styled.div`
   padding: 16px 0;
+  margin: 0 16px;
   border-bottom: 1px solid #e2e4e8;
   display: flex;
   > * {

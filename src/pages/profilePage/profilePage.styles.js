@@ -25,3 +25,13 @@ export const NotFound = styled(Container)`
     color: #0366d6;
   }
 `
+
+export const RepositoriesContent = styled.div`
+  width: 75%;
+`
+
+export const Message = styled.div`
+  margin-left: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e1e4e8 !important;
+`

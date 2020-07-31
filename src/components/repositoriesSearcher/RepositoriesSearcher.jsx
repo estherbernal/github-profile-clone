@@ -8,10 +8,17 @@ import {
   SearchWrapper,
 } from './repositoriesSearcher.styles'
 
-const RepositoriesSearcher = () => {
+const RepositoriesSearcher = ({ searchValue, setSearchValue }) => {
+  const setValue = ({ target }) => {
+    setSearchValue(target.value)
+  }
   return (
     <SearchWrapper>
-      <Input placeholder={'Find a repository...'} />
+      <Input
+        placeholder={'Find a repository...'}
+        value={searchValue}
+        onChange={setValue}
+      />
       <FilterButton>
         Type: <strong>All</strong>
         <Arrow />

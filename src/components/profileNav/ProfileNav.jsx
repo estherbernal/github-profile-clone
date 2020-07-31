@@ -7,12 +7,12 @@ import StickyProfile from '../stickyProfile/StickyProfile'
 // Styled components
 import { NavWrapper, FlexContainer } from './profileNav.styles'
 
-const ProfileNav = ({ user }) => {
+const ProfileNav = ({ user, repositoriesCounter }) => {
   return (
     <NavWrapper>
       <FlexContainer>
         <StickyProfile username={user.login} avatar={user.avatarUrl} />
-        <NavigationTabs repositoriesCount={user.repositories.totalCount} />
+        <NavigationTabs repositoriesCount={repositoriesCounter} />
       </FlexContainer>
     </NavWrapper>
   )

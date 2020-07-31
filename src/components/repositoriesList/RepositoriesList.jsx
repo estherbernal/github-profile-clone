@@ -3,19 +3,17 @@ import React from 'react'
 // Components
 import Pagination from '../pagination/Pagination'
 import RepositoryItem from '../repositoryItem/RepositoryItem'
-import RepositoriesSearcher from '../repositoriesSearcher/RepositoriesSearcher'
 
 // Styled components
 import { ListWrapper } from './repositoriesList.styles'
 
-const RepositoriesList = ({ repositories }) => {
+const RepositoriesList = ({ repositories, onChangePage }) => {
   return (
     <ListWrapper>
-      <RepositoriesSearcher />
-      {repositories.nodes.map((repository) => (
-        <RepositoryItem repository={repository} key={repository.id} />
+      {repositories.map((repository) => (
+        <RepositoryItem repository={repository.node} key={repository.id} />
       ))}
-      <Pagination />
+      <Pagination onChangePage={onChangePage} />
     </ListWrapper>
   )
 }
