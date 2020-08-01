@@ -60,6 +60,7 @@ const AuthPage = () => {
               'https://docs.github.com/es/enterprise/2.19/user/github/authenticating-to-github/creating-a-personal-access-token'
             }
             target={'_blank'}
+            rel={'noopener noreferrer'}
           >
             click here
           </a>
