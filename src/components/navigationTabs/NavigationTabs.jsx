@@ -3,12 +3,10 @@ import { useParams } from 'react-router'
 
 // Styled components
 import { Tab, TabsWrapper } from './navigationTabs.styles'
-import {
-  OverviewIcon,
-  PackagesIcon,
-  ProjectsIcon,
-  RepositoriesIcon,
-} from '../icons'
+import { ReactComponent as OverviewIcon } from '../icons/overviewIcon.svg'
+import { ReactComponent as PackagesIcon } from '../icons/packagesIcon.svg'
+import { ReactComponent as ProjectsIcon } from '../icons/projectsIcon.svg'
+import { ReactComponent as RepositoriesIcon } from '../icons/repositoriesIcon.svg'
 
 const NavigationTabs = ({ repositoriesCount }) => {
   const { username } = useParams()

@@ -1,13 +1,11 @@
 import React from 'react'
 
 // Components
-import {
-  FollowersIcon,
-  LocationIcon,
-  StatusIcon,
-  StarIcon,
-  UrlIcon,
-} from '../icons'
+import { ReactComponent as FollowersIcon } from '../icons/followersIcon.svg'
+import { ReactComponent as LocationIcon } from '../icons/locationIcon.svg'
+import { ReactComponent as StatusIcon } from '../icons/statusIcon.svg'
+import { ReactComponent as StarIcon } from '../icons/starIcon.svg'
+import { ReactComponent as UrlIcon } from '../icons/urlIcon.svg'
 
 // Styled components
 import { Button } from '../styledComponents'

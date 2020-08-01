@@ -2,7 +2,8 @@ import React from 'react'
 import moment from 'moment'
 
 // Components
-import { ChartIcon, StarIcon } from '../icons'
+import { ReactComponent as ChartIcon } from '../icons/chartIcon.svg'
+import { ReactComponent as StarIcon } from '../icons/starIcon.svg'
 
 // Style components
 import { Button } from '../styledComponents'
