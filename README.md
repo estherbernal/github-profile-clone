@@ -1,12 +1,13 @@
-# GITHUB USER REPOSITORIES PROFILE CLONE
+# Github user's profile clone (2020)
 
-Esther Bernal
+![image](https://user-images.githubusercontent.com/60918154/170649439-74f347e2-6801-4c7d-8fcf-4f80e04fe650.png)
 
-### Description
+
+## Description
 
 A clone of the user's repositories profile page from GitHub, using React and GitHub GraphQL API (v4).
 
-## BEFORE START
+## Before starting
 
 You will need the GitHub API base endpoint as an environment variable:
 
